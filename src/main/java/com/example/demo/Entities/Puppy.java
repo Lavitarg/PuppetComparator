@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Puppet {
+public class Puppy {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -14,10 +14,8 @@ public class Puppet {
     private Integer score;
     private String linkToImage;
 
-    public Puppet(Integer score) {
-        this.score = score;
-    }
-    protected Puppet(){};
+
+    protected Puppy(){};
 
     public Long getId() {
         return id;
