@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PuppyComparator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<!--    <script type="text/javascript" src="/scripts/updateChoices.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    </div>
+    <script>
+        function updateChoices(choice) {
+            $.ajax({
+                url: "/updatechoices",
+                data:{choice:choice},
+                success: function(html){
+                    $("#resultsBlock").replaceWith(html)
+                    // $("#resultsBlock").append(html);
+                }
+            });
+        }
+    </script>
+    <button class="mt-2" onclick="updateChoices()">load</button>
+
+    <div id="resultsBlock">
+
+    </div>
+
+</body>
+
+
+
+</html>

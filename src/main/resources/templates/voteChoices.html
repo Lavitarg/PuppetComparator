@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PuppyComparator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<div class="container pt-4" id="resultsBlock">
+    <div th:height="200"  align="center">
+        <h1><b>Time to choose!</b></h1>
+        <h4>Who is a good boy?</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img class="w-100" th:src="${puppyImage1}" onclick="updateChoices(1)">
+            <button class="mt-2" onclick="updateChoices(1)">This one!</button>
+        </div>
+        <div class="col-md-6 text-center">
+            <img class="w-100" th:src="${puppyImage2}" onclick="updateChoices"(2)>
+            <button class="mt-2" onclick="updateChoices(2)">This one!</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
