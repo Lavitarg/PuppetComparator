@@ -13,7 +13,6 @@
 </head>
 <body>
 
-    </div>
     <script>
         function updateChoices(choice) {
             $.ajax({
@@ -26,8 +25,7 @@
             });
         }
     </script>
-    <button class="mt-2" onclick="updateChoices()">load</button>
-
+    <script>$(document).ready(updateChoices())</script>
     <div id="resultsBlock">
 
     </div>

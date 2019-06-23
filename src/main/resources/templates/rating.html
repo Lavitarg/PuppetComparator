@@ -1,12 +1,46 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>PuppyComparator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 </head>
 <body>
+<div class="d-flex flex-column">
+    <h2 class="d-flex justify-content-center">TOP-10</h2>
 
-<table>
+</div>
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h3>Position</h3>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Picture</h3>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Name</h3>
+        </div>
+    </div>
+</div>
+<div class="container pt-4" th:each="puppy : ${puppies}">
+    <div class="row">
+        <div class="col-md-4 text-center">
+           <h3 th:text="${puppyStat.count}"></h3>
+        </div>
+        <div class="img col-md-4 text-center">
+            <img class="w-100" th:src="${puppy.linkToImage}" >
+        </div>
+        <div class="col-md-4 text-center">
+            <h5 th:text="${puppy.name}"></h5>
+        </div>
+    </div>
+</div>
+<!--<table>
     <tr>
         <th>#</th>
         <th>Picture</th>
@@ -19,7 +53,7 @@
     </tr>
     <td>2</td>
     <td><img th:src="${pic2}" height="400" width="400"></td>
-    <td th:text="${score2}"></td>
-</table>
+    <td th:text="${name2}"></td>
+</table>-->
 </body>
 </html>

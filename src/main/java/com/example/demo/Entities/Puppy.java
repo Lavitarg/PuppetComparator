@@ -13,7 +13,7 @@ public class Puppy {
     private Long id;
     private Integer score;
     private String linkToImage;
-
+    private String name;
 
     protected Puppy(){};
 
@@ -39,5 +39,13 @@ public class Puppy {
 
     public void setLinkToImage(String linkToImage) {
         this.linkToImage = linkToImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
