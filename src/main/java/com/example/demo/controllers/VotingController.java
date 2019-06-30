@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,10 +32,9 @@ public class VotingController {
     private Puppy puppy1;
     private Puppy puppy2;
 
-    //при переходе на страницу голосования создается лист со случайным порядком картинок
     @GetMapping("/vote")
     public String voteStart(Model model, Principal principal){
-
+//        если пользователь уже проголосовал, отправляем на страницу рейтинга
         if(appUserService.getUserVoteStatus(principal)){
             return "redirect:rating";
         }
@@ -45,8 +43,6 @@ public class VotingController {
         puppyIterator = puppyList.listIterator();
         Collections.shuffle(puppyList);
         chosenPuppiesList = new ArrayList<>();
-
-
         return "votePage";
     }
 
@@ -63,6 +59,7 @@ public class VotingController {
             }
         }
 //        если лист с вариантами закончился, отдаем информацию о конце голосования и обновляем очки у выбранных вариантов
+//         так же помечаем что пользователь уже голосовал
         if(!puppyIterator.hasNext()){
             puppyService.updateScore(chosenPuppiesList);
             appUserService.setUserVoted(principal);

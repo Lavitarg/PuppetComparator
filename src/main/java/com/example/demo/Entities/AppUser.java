@@ -14,19 +14,18 @@ public class AppUser {
     private String password;
     private boolean active;
     private boolean alreadyVoted;
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
+    private Set<Role> roles;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public boolean isActive() {
         return active;
@@ -39,13 +38,6 @@ public class AppUser {
     private boolean haveVoted;
 
     public AppUser() {
-    }
-
-    public AppUser(String username, String password, boolean active, boolean alreadyVoted) {
-        this.username = username;
-        this.password = password;
-        this.active = active;
-        this.alreadyVoted = alreadyVoted;
     }
 
     public Long getId() {
@@ -78,5 +70,14 @@ public class AppUser {
 
     public void setAlreadyVoted(boolean alreadyVoted) {
         this.alreadyVoted = alreadyVoted;
+    }
+
+    public AppUser(String username, String password, boolean active, boolean alreadyVoted, Set<Role> roles, boolean haveVoted) {
+        this.username = username;
+        this.password = password;
+        this.active = active;
+        this.alreadyVoted = alreadyVoted;
+        this.roles = roles;
+        this.haveVoted = haveVoted;
     }
 }

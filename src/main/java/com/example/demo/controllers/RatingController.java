@@ -1,17 +1,12 @@
 package com.example.demo.controllers;
 
-import com.example.demo.Entities.Puppy;
-import com.example.demo.Repository.PuppyRepository;
-import com.example.demo.Services.PuppyService;
 import com.example.demo.Services.impl.AppUserServiceImpl;
 import com.example.demo.Services.impl.PuppyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 public class RatingController {
@@ -31,4 +26,5 @@ public class RatingController {
             return "redirect:home";
         }
     }
+
 }

@@ -41,4 +41,5 @@ public class AppUserServiceImpl implements AppUserService {
         user.setAlreadyVoted(true);
         userRepository.save(user);
     }
+
 }
