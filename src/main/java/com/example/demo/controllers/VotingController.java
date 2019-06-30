@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -22,10 +23,11 @@ public class VotingController {
     @Autowired
     PuppyServiceImpl puppyService;
 
-    List<Puppy> puppyList;
-    Iterator<Puppy> puppyIterator;
-    Puppy puppy1;
-    Puppy puppy2;
+    private List<Puppy> puppyList;
+    private List<Puppy> chosenPuppiesList;
+    private Iterator<Puppy> puppyIterator;
+    private Puppy puppy1;
+    private Puppy puppy2;
 
     //при переходе на страницу голосования создается лист со случайным порядком картинок
     @GetMapping("/vote")
@@ -34,6 +36,8 @@ public class VotingController {
         puppyList = puppyService.findAll();
         puppyIterator = puppyList.listIterator();
         Collections.shuffle(puppyList);
+        chosenPuppiesList = new ArrayList<>();
+
 
         return "votePage";
     }
@@ -41,17 +45,18 @@ public class VotingController {
 //    вызывается при первой загрузке страницы голосования или при клике на картинку\кнопку
     @GetMapping("/updatechoices")
     public String updateChoicesAjax(@RequestParam(name="choice", required=false) String choice, Model model ){
-//      если была нажата кнопка или картинка, обновляем данные в БД
+//      если была нажата кнопка или картинка, добавляем в отделньый лист вариант, за который проголосовали
         if(choice!=null){
             switch(choice) {
                 case ("1"):
-                    puppyService.updateScore(puppy1);
+                    chosenPuppiesList.add(puppy1);
                 case ("2"):
-                    puppyService.updateScore(puppy2);
+                    chosenPuppiesList.add(puppy2);
             }
         }
-//        если лист с картинками закончился, отдаем информацию о конце голосования
+//        если лист с вариантами закончился, отдаем информацию о конце голосования и обновляем очки у выбранных вариантов
         if(!puppyIterator.hasNext()){
+            puppyService.updateScore(chosenPuppiesList);
             return "voteEnd";
 //            иначе отображаем следующую пару
         }else {

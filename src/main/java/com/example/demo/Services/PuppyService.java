@@ -8,5 +8,6 @@ public interface PuppyService {
 
     List<Puppy> findAllPuppiesDescByScore();
     List<Puppy> findAll();
-    void updateScore(Puppy puppy);
+    void updateScore(List<Puppy> puppylist);
+    
 }

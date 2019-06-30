@@ -23,8 +23,10 @@ public class PuppyServiceImpl implements PuppyService {
     }
 
     @Override
-    public void updateScore(Puppy puppy) {
-        puppy.setScore(puppy.getScore()+1);
-        puppyRepository.save(puppy);
+    public void updateScore(List<Puppy> puppyList) {
+        for(Puppy puppy:puppyList) {
+            puppy.setScore(puppy.getScore()+1);
+            puppyRepository.save(puppy);
+        }
     }
 }
