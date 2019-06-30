@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- Bootstrap core CSS -->
+        <link href="../static/css/bootstrap.css" rel="stylesheet"/>
+        <title>PuppyComparator</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+
+        <div class="d-flex flex-column">
+            <h1 class="d-flex justify-content-center" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h1>
+            <h2 class="d-flex justify-content-center">R U ready for vote?</h2>
+            <button class="mx-auto" onclick=window.location.href="/vote" >Start Vote</button>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+
+    </body>
+</html>
