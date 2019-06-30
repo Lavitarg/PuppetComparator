@@ -13,6 +13,7 @@ public class AppUser {
     private String username;
     private String password;
     private boolean active;
+    private boolean alreadyVoted;
 
     public Set<Role> getRoles() {
         return roles;
@@ -40,11 +41,11 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(String username, String password, boolean active, boolean haveVoted) {
+    public AppUser(String username, String password, boolean active, boolean alreadyVoted) {
         this.username = username;
         this.password = password;
         this.active = active;
-        this.haveVoted = haveVoted;
+        this.alreadyVoted = alreadyVoted;
     }
 
     public Long getId() {
@@ -71,11 +72,11 @@ public class AppUser {
         this.password = password;
     }
 
-    public boolean isHaveVoted() {
-        return haveVoted;
+    public boolean isAlreadyVoted() {
+        return alreadyVoted;
     }
 
-    public void setHaveVoted(boolean haveVoted) {
-        this.haveVoted = haveVoted;
+    public void setAlreadyVoted(boolean alreadyVoted) {
+        this.alreadyVoted = alreadyVoted;
     }
 }

@@ -2,7 +2,11 @@ package com.example.demo.Services;
 
 import com.example.demo.Entities.AppUser;
 
+import java.security.Principal;
+
 public interface AppUserService {
 
-    public boolean saveUniqUser(AppUser user);
+    boolean saveUniqUser(AppUser user);
+    boolean getUserVoteStatus(Principal principal);
+    void setUserVoted(Principal principal);
 }

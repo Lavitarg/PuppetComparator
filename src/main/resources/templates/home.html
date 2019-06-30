@@ -14,6 +14,7 @@
 
         <div class="d-flex flex-column">
             <h1 class="d-flex justify-content-center" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h1>
+            <h2 class="d-flex justify-content-center" th:text="${ratingWarning}"></h2>
             <h2 class="d-flex justify-content-center">R U ready for vote?</h2>
             <button class="mx-auto" onclick=window.location.href="/vote" >Start Vote</button>
             <form th:action="@{/logout}" method="post">

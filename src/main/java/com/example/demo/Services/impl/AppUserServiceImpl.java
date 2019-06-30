@@ -7,6 +7,7 @@ import com.example.demo.Services.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Collections;
 
 @Service
@@ -25,5 +26,19 @@ public class AppUserServiceImpl implements AppUserService {
         } else{
             return false;
         }
+    }
+
+    @Override
+    public boolean getUserVoteStatus(Principal principal) {
+        return userRepository
+                .findByUsername(principal.getName())
+                .isAlreadyVoted();
+    }
+
+    @Override
+    public void setUserVoted(Principal principal) {
+        AppUser user = userRepository.findByUsername(principal.getName());
+        user.setAlreadyVoted(true);
+        userRepository.save(user);
     }
 }

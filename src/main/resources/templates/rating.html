@@ -11,8 +11,12 @@
 </head>
 <body>
 <div class="d-flex flex-column">
-    <h2 class="d-flex justify-content-center">Best boys</h2>
-    <button class="mx-auto" onclick=window.location.href="/vote" >Vote again!</button>
+    <h1 class="d-flex justify-content-center">Best boys top 10</h1>
+    <h2 class="d-flex justify-content-center" >Your choice was recorded.</h2>
+    <button class="mx-auto" th:action="@{/logout}" th:method="post" >Sign Out</button>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 </div>
 <div class="container pt-4">
     <div class="row">
