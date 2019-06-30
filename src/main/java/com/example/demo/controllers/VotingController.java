@@ -29,7 +29,7 @@ public class VotingController {
 
     //при переходе на страницу голосования создается лист со случайным порядком картинок
     @GetMapping("/vote")
-    public String vote (Model model){
+    public String voteStart(Model model){
 //        инициализируем лист с картинками и перемешиваем его
         puppyList = puppyService.findAll();
         puppyIterator = puppyList.listIterator();

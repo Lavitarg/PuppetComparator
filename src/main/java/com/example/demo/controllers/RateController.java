@@ -18,7 +18,7 @@ public class RateController {
     PuppyServiceImpl puppyService;
 
     @GetMapping("/rating")
-    public String greeting( Model model) {
+    public String showRating(Model model) {
         model.addAttribute("puppies",puppyService.findAllPuppiesDescByScore());
         return "rating";
     }
