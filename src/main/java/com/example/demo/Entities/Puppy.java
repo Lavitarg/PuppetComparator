@@ -1,11 +1,9 @@
 package com.example.demo.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Puppy")
 public class Puppy {
 
     @Id
@@ -15,7 +13,7 @@ public class Puppy {
     private String linkToImage;
     private String name;
 
-    protected Puppy(){};
+    protected Puppy(){}
 
     public Long getId() {
         return id;
